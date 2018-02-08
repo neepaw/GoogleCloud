@@ -62,10 +62,10 @@ X_train.shape
 # In[48]:
 
 
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
-lda = LDA(n_components = 1)
-X_train = lda.fit_transform(X_train,y)
-X_test = lda.transform(X_test)
+from sklearn.decomposition import PCA
+pca = PCA(n_components = 4)
+X_train = pca.fit_transform(X_train)
+X_test = pca.transform(X_test)
 
 
 # In[49]:
