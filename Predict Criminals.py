@@ -77,7 +77,7 @@ X_test = lda.transform(X_test)
 # In[52]:
 
 
-#plt.scatter(X_train,y)
+##plt.scatter(X_train,y)
 
 
 # In[53]:
