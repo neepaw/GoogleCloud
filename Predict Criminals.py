@@ -88,10 +88,10 @@ from sklearn.svm import SVC
 from sklearn.model_selection import GridSearchCV
 classifier = SVC(kernel = 'rbf')
 parameters = [
-            {'C': [1,10,1000], 'kernel': ['linear']},
-            {'C': [1,10,1000], 'kernel': ['rbf'], 'gamma': [0.5,0.1,0.01,0.0001]},
-            {'C': [1,10,1000], 'kernel': ['poly'], 'degree':[2,3], 'gamma': [0.5,0.1,0.01,0.0001], 'coef0':[0.5,0.1,0.01,0.0001] },
-            {'C': [1,10,1000], 'kernel': ['sigmoid'],'coef0':[0.5,0.1,0.01,0.0001],'gamma': [0.5,0.1,0.01,0.0001]}
+            # {'C': [1,10,100,1000], 'kernel': ['linear']},
+            {'C': [1,10,100,1000], 'kernel': ['rbf'], 'gamma': [0.5,0.1,0.01,0.0001]}
+            # {'C': [1,10,1000], 'kernel': ['poly'], 'degree':[2,3], 'gamma': [0.5,0.1,0.01] }
+            # {'C': [1,10,1000], 'kernel': ['sigmoid'],'coef0':[0.5,0.1,0.01,0.0001],'gamma': [0.5,0.1,0.01,0.0001]}
             ]
 
 
