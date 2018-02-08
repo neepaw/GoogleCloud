@@ -63,7 +63,7 @@ X_train.shape
 
 
 from sklearn.decomposition import PCA
-pca = PCA(n_components = 4)
+pca = PCA(n_components = 10)
 X_train = pca.fit_transform(X_train)
 X_test = pca.transform(X_test)
 
@@ -89,8 +89,8 @@ from sklearn.model_selection import GridSearchCV
 classifier = SVC(kernel = 'rbf')
 parameters = [
             # {'C': [1,10,100,1000], 'kernel': ['linear']},
-            {'C': [1,10,100,1000], 'kernel': ['rbf'], 'gamma': [0.5,0.1,0.01,0.0001]}
-            # {'C': [1,10,1000], 'kernel': ['poly'], 'degree':[2,3], 'gamma': [0.5,0.1,0.01] }
+            # {'C': [1,10,100,1000], 'kernel': ['rbf'], 'gamma': [0.5,0.1,0.01,0.0001]}
+             {'C': [1,10,100,1000], 'kernel': ['poly'], 'degree':[2,3], 'gamma': [0.5,0.1,0.01,0.001] }
             # {'C': [1,10,1000], 'kernel': ['sigmoid'],'coef0':[0.5,0.1,0.01,0.0001],'gamma': [0.5,0.1,0.01,0.0001]}
             ]
 
