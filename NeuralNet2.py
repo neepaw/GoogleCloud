@@ -21,7 +21,7 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
 from sklearn.decomposition import PCA
-pca = PCA(n_components = 20)
+pca = PCA(n_components = 40)
 
 X_train = pca.fit_transform(X_train)
 X_test = pca.transform(X_test)
@@ -36,7 +36,7 @@ from keras.layers import LeakyReLU
 
 model = Sequential()
 
-model.add(Dense(output_dim = 32, init = 'uniform', activation = 'relu', input_dim = 20))
+model.add(Dense(output_dim = 32, init = 'uniform', activation = 'relu', input_dim = 40))
 model.add(Dropout(0.4))
 model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 64))
 model.add(Dropout(0.3))
@@ -67,7 +67,7 @@ y_pred = np.array(ans)
 def get_csv(y_pred):
     import csv
     ans = np.append(pd.DataFrame(person_id) ,pd.DataFrame(y_pred), axis = 1)
-    filename = 'CriminalNN.csv'
+    filename = 'CriminalNN2.csv'
     header = ['PERID','Criminal']
     ans = list(ans)
     with open(filename,'w') as csvfile:
