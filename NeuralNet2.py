@@ -39,9 +39,11 @@ model = Sequential()
 model.add(Dense(output_dim = 32, init = 'uniform', activation = 'relu', input_dim = 40))
 model.add(Dropout(0.4))
 model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 64))
-model.add(Dropout(0.3))
+model.add(Dropout(0.5))
 model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 128))
-model.add(Dropout(0.4))
+model.add(Dropout(0.5))
+model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 256))
+model.add(Dropout(0.5))
 model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 256))
 model.add(Dropout(0.4))
 model.add(Dense(init = 'uniform', activation = 'sigmoid', output_dim = 2))
@@ -50,14 +52,14 @@ model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = [
 
 model.summary()
 y = to_categorical(y)
-model.fit(X_train,y, batch_size = 32, epochs = 250)
+model.fit(X_train,y, batch_size = 32, epochs = 500)
 
 y_pred = model.predict(X_test)
 
 ans = []
 y_pred = np.array(y_pred)
 for i,j in y_pred:
-	if i < j:
+	if i < j/10:
 		ans.append(1)
 	else:
 		ans.append(0)
