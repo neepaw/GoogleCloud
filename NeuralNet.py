@@ -44,7 +44,6 @@ model.add(Dropout(0.5))
 model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 128))
 model.add(Dropout(0.5))
 model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 256))
-model.add(Dropout(0.4))
 model.add(Dense(init = 'uniform', activation = 'sigmoid', output_dim = 2))
 model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
 
