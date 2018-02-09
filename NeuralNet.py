@@ -21,7 +21,7 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
 from sklearn.decomposition import PCA
-pca = PCA(n_components = 30)
+pca = PCA(n_components = 25)
 
 X_train = pca.fit_transform(X_train)
 X_test = pca.transform(X_test)
@@ -49,7 +49,7 @@ model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = [
 
 model.summary()
 y = to_categorical(y)
-model.fit(X_train,y, batch_size = 32, epochs = 100)
+model.fit(X_train,y, batch_size = 32, epochs = 150)
 
 y_pred = model.predict(X_test)
 
