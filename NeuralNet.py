@@ -20,7 +20,7 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-input_dim = 20
+input_dim = 40
 from sklearn.decomposition import PCA
 pca = PCA(n_components = input_dim)
 
@@ -53,7 +53,7 @@ model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = [
 
 model.summary()
 y = to_categorical(y)
-model.fit(X_train,y, batch_size = 32, epochs = 200)
+model.fit(X_train,y, batch_size = 32, epochs = 100)
 
 y_pred = model.predict(X_test)
 
