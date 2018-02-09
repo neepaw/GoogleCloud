@@ -63,7 +63,7 @@ y_pred = model.predict(X_test)
 ans = []
 y_pred = np.array(y_pred)
 for i,j in y_pred:
-	if i < j/10:
+	if i < j:
 		ans.append(1)
 	else:
 		ans.append(0)
