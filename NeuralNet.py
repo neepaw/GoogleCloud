@@ -21,7 +21,7 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
 from sklearn.decomposition import PCA
-pca = PCA(n_components = 20)
+pca = PCA(n_components = 30)
 
 X_train = pca.fit_transform(X_train)
 X_test = pca.transform(X_test)
@@ -36,21 +36,20 @@ from keras.layers import LeakyReLU
 
 model = Sequential()
 
-model.add(Dense(output_dim = 32, init = 'uniform', activation = 'relu', input_dim = 20))
+model.add(Dense(output_dim = 32, init = 'uniform', activation = LeakyReLU(alpha = 0.3), input_dim = 30))
 model.add(Dropout(0.4))
-model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 64))
-model.add(Dropout(0.3))
-model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 128))
-model.add(Dropout(0.4))
-model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 256))
+model.add(Dense(init = 'uniform', activation = LeakyReLU(alpha = 0.3), output_dim = 64))
+model.add(Dropout(0.5))
+model.add(Dense(init = 'uniform', activation = LeakyReLU(alpha = 0.3), output_dim = 128))
+model.add(Dropout(0.5))
+model.add(Dense(init = 'uniform', activation = LeakyReLU(alpha = 0.3), output_dim = 256))
 model.add(Dropout(0.4))
 model.add(Dense(init = 'uniform', activation = 'sigmoid', output_dim = 2))
-
 model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
 
 model.summary()
 y = to_categorical(y)
-model.fit(X_train,y, batch_size = 32, epochs = 250)
+model.fit(X_train,y, batch_size = 32, epochs = 100)
 
 y_pred = model.predict(X_test)
 
