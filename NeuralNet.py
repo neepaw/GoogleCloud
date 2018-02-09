@@ -20,7 +20,7 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-input_dim = 50
+input_dim = 55
 from sklearn.decomposition import PCA
 pca = PCA(n_components = input_dim)
 
@@ -40,16 +40,16 @@ model = Sequential()
 model.add(Dense(output_dim = 32, init = 'uniform', activation = 'relu', input_dim = input_dim))
 model.add(Dropout(0.2))
 model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 64))
-model.add(Dropout(0.35))
+model.add(Dropout(0.4))
 model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 128))
 model.add(Dropout(0.5))
 model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 256))
 model.add(Dropout(0.5))
 model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 128))
-model.add(Dropout(0.35))
+model.add(Dropout(0.4))
 model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 64))
 model.add(Dense(init = 'uniform', activation = 'sigmoid', output_dim = 2))
-model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
+model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
 model.summary()
 y = to_categorical(y)
