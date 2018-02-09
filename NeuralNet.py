@@ -32,16 +32,17 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import Dropout
 from keras.utils import to_categorical
+from keras.layers import LeakyReLU
 
 model = Sequential()
 
-model.add(Dense(output_dim = 32, init = 'uniform', activation = 'relu', input_dim = 10))
+model.add(Dense(output_dim = 32, init = 'uniform', activation = LeakyReLU(alpha=0.3), input_dim = 10))
 model.add(Dropout(0.4))
-model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 64))
+model.add(Dense(init = 'uniform', activation = LeakyReLU(alpha=0.3), output_dim = 64))
 model.add(Dropout(0.3))
-model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 128))
+model.add(Dense(init = 'uniform', activation = LeakyReLU(alpha=0.3), output_dim = 128))
 model.add(Dropout(0.4))
-model.add(Dense(init = 'uniform', activation = 'sigmoid', output_dim = 2))
+model.add(Dense(init = 'uniform', activation = 'softmax', output_dim = 2))
 
 model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
 
