@@ -37,21 +37,25 @@ from keras.layers import LeakyReLU
 model = Sequential()
 
 model.add(Dense(output_dim = 32, init = 'uniform', activation = 'relu', input_dim = 40))
-model.add(Dropout(0.4))
+model.add(Dropout(0.2))
 model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 64))
-model.add(Dropout(0.5))
+model.add(Dropout(0.3))
 model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 128))
-model.add(Dropout(0.4))
+model.add(Dropout(0.45))
+model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 256))
+model.add(Dropout(0.45))
 model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 256))
 model.add(Dropout(0.35))
-model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 256))
+model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 128))
+model.add(Dropout(0.3))
+model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 64))
 model.add(Dense(init = 'uniform', activation = 'sigmoid', output_dim = 2))
 
 model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
 
 model.summary()
 y = to_categorical(y)
-model.fit(X_train,y, batch_size = 32, epochs = 150)
+model.fit(X_train,y, batch_size = 32, epochs = 250)
 
 y_pred = model.predict(X_test)
 
