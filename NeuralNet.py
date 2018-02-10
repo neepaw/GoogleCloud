@@ -54,11 +54,11 @@ model.add(Dense(init = 'uniform', activation = 'sigmoid', output_dim = 2))
 
 sgd = optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0)
 
-model.compile(optimizer = 'adamax', loss = 'categorical_crossentropy', metrics = ['accuracy'])
+model.compile(optimizer = 'adamax', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
 model.summary()
 y = to_categorical(y)
-model.fit(X_train,y, batch_size = 32, epochs = 100)
+model.fit(X_train,y, batch_size = 16, epochs = 100)
 
 y_pred = model.predict(X_test)
 
