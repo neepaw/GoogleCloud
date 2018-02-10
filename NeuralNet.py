@@ -20,9 +20,9 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-input_dim = 55
-from sklearn.decomposition import PCA
-pca = PCA(n_components = input_dim)
+input_dim = 40
+from sklearn.decomposition import KernelPCA
+pca = KernelPCA(n_components = input_dim, kernel = 'rbf')
 
 X_train = pca.fit_transform(X_train)
 X_test = pca.transform(X_test)
