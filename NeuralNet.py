@@ -34,7 +34,7 @@ from keras.layers import Dense
 from keras.layers import Dropout
 from keras.utils import to_categorical
 from keras.layers import LeakyReLU
-
+from keras.optimizers import RMSprop
 model = Sequential()
 
 model.add(Dense(output_dim = 32, init = 'uniform', activation = 'relu', input_dim = input_dim))
@@ -49,7 +49,7 @@ model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 128))
 model.add(Dropout(0.4))
 model.add(Dense(init = 'uniform', activation = 'relu', output_dim = 64))
 model.add(Dense(init = 'uniform', activation = 'sigmoid', output_dim = 2))
-model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+model.compile(optimizer = RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0), loss = 'binary_crossentropy', metrics = ['accuracy'])
 
 model.summary()
 y = to_categorical(y)
